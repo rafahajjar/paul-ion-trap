@@ -1,4 +1,4 @@
-function [v1, v2, v3, un, cent, ds] = triangulacion(x, y, z, param1, param2)
+function [v1, v2, v3, un, cent, ds] = triangles(x, y, z, param1, param2)
     vertex_up = [x; y; z];
     vertex_down = [x; y; -z];    
     topol = delaunay(param1', param2')';
