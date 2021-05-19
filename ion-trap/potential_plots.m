@@ -9,8 +9,6 @@ N = 15;
 % Constantes fisicas
 epsilon = 8.854e-12;
 K = 1/(4*pi*epsilon);
-qe = 1.6e-19;
-mp = 1.6749e-27;
 
 % Potencial en cada placa hiperbolica del condensador
 V = 0.5;
