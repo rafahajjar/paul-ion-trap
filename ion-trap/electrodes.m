@@ -1,4 +1,5 @@
-function [qn, v1, v2, v3, un, cent, ds] = electrodes(V, r0, z0, N)
+function [qn, v1, v2, v3, un, cent, ds] = electrodes(V, r0, z0)
+    N = 15; % Parametro discretizacion
     epsilon = 8.854e-12;
     K = 1/(4*pi*epsilon);
 

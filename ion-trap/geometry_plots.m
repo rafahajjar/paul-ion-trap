@@ -3,9 +3,6 @@ close all;
 
 %% Condensador hiperbolico: obtencion de la carga
 
-% Parametro de discretizacion.
-N = 15;
-
 % Potencial en cada placa hiperbolica del condensador
 V = 0.5;
 
@@ -13,7 +10,7 @@ V = 0.5;
 r0 = 1;
 z0 = 0.3;
 
-[qn, v1, v2, v3, un, cent, ds] = electrodes(V, r0, z0, N);
+[qn, v1, v2, v3, un, cent, ds] = electrodes(V, r0, z0);
 
 %% Representación de la geometria del objeto
 

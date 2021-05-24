@@ -3,9 +3,6 @@ close all;
 
 %% Condensador hiperbolico: obtencion de la carga
 
-% Parametro de discretizacion.
-N = 15;
-
 % Parametros de tamaño de la hiperbola
 r0 = 1;
 z0 = 0.3;
@@ -15,11 +12,11 @@ zmax = sqrt(z0^2+r0^2/2);
 % Potencial en cada placa hiperbolica del condensador
 V = 0.5; 
 
-[qn, v1, v2, v3, un, cent, ds] = electrodes(V, r0, z0, N);
+[qn, v1, v2, v3, un, cent, ds] = electrodes(V, r0, z0);
 
 %% Calculo trayectoria de 1 ion
 
-dt = 1e-5; % Timestep in seconds.
+dt = 1e-4; % Timestep in seconds.
 T = 0.01; % Total time in seconds;
 
 ri = initial_pos(r0, z0);

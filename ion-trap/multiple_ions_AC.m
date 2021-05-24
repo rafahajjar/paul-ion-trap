@@ -1,6 +1,8 @@
 clear;
 close all;
 
+N = 2; % Numero de iones
+
 %% Condensador hiperbolico: obtencion de la carga
 
 % Parametros de tamaño de la hiperbola
@@ -20,9 +22,9 @@ dt = 2e-6; % Timestep in seconds.
 T = 0.07;  % Total time in seconds.
 f = 640;   % Frequency in hertzs.
 
-ri = initial_pos(r0, z0);
-vi = [0, 0, 0];
-[r, v, a] = trajectory_AC(ri, vi, qn, ds, cent, dt, T, f);
+ri = initial_pos_multiple(r0, z0, N);
+vi = zeros(size(ri));
+[r, v, a] = trajectory_AC_multiple(ri, vi, qn, ds, cent, dt, T, f, N);
 
 %% Representación gráfica
 

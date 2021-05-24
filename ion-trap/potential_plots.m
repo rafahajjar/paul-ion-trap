@@ -3,9 +3,6 @@ close all;
 
 %% Condensador hiperbolico: obtencion de la carga
 
-% Parametro de discretizacion.
-N = 15;
-
 % Constantes fisicas
 epsilon = 8.854e-12;
 K = 1/(4*pi*epsilon);
@@ -19,7 +16,7 @@ z0 = 0.3;
 rmax = sqrt(2*z0^2+r0^2);
 zmax = sqrt(z0^2+r0^2/2);
 
-[qn, v1, v2, v3, un, cent, ds] = electrodes(V, r0, z0, N);
+[qn, v1, v2, v3, un, cent, ds] = electrodes(V, r0, z0);
 
 %% Creación de las mallas. Cálculo del potencial y campo eléctrico
 

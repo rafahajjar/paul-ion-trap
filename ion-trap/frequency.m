@@ -3,9 +3,6 @@ close all;
 
 %% Condensador hiperbolico: obtencion de la carga
 
-% Parametro de discretizacion.
-N = 15;
-
 % Parametros de tamaño de la hiperbola
 r0 = 1;
 z0 = 0.3;
@@ -19,7 +16,7 @@ T = 0.01; % Total time in seconds;
 V = [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100];
 freq = zeros(size(V));
 for j = 1:length(V)
-    [qn, v1, v2, v3, un, cent, ds] = electrodes(V(j), r0, z0, N);
+    [qn, v1, v2, v3, un, cent, ds] = electrodes(V(j), r0, z0);
     trials = 100;
     time = zeros(1, trials);
     for i = 1:trials
