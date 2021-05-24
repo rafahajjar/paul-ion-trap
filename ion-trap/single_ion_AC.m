@@ -19,12 +19,13 @@ V = 0.5;
 
 %% Calculo trayectoria de 1 ion
 
-dt = 1e-5; % Timestep in seconds.
-T = 0.01; % Total time in seconds;
+dt = 2e-6; % Timestep in seconds.
+T = 0.07;  % Total time in seconds.
+f = 640;   % Frequency in hertzs.
 
 ri = initial_pos(r0, z0);
 vi = [0, 0, 0];
-[r, v, a] = trajectory_AC(ri, vi, qn, ds, cent, dt, T);
+[r, v, a] = trajectory_AC(ri, vi, qn, ds, cent, dt, T, f);
 
 %% Representación gráfica
 
@@ -32,11 +33,20 @@ vx = [v1(1,:); v2(1,:); v3(1,:)];
 vy = [v1(2,:); v2(2,:); v3(2,:)];
 vz = [v1(3,:); v2(3,:); v3(3,:)];
 
-figure('Color','white')
+figure('Color','white','Position',[0,100,1000,800])
 ax = axes;
 set(ax,'xlim',[-rmax rmax],'ylim',[-rmax rmax],'zlim',[-zmax zmax]);
 view(ax, 3)
 hold(ax)
-% fill3(ax, vx, vy, vz, qn, 'EdgeAlpha', 0, 'FaceAlpha', .3)
-% colormap jet
+fill3(ax, vx, vy, vz, qn, 'EdgeAlpha', 0, 'FaceAlpha', .3)
+colormap jet
 comet3(ax, r(:, 1), r(:, 2), r(:, 3))
+
+%% Write video
+
+for k = 1:20 
+   frame = getframe(gcf);
+   writeVideo(v,frame);
+end
+
+close(v);
