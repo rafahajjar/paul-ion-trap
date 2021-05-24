@@ -57,18 +57,20 @@ surf(y,z,V2d')
 colorbar
 colormap jet
 shading interp
+axis equal
 saveas(gcf,'images/one_slice_surface.png')
 
 % One slice contour plot (x=0)
 [yy2d, zz2d] = meshgrid(y,z);
 figure('Color','white')
-hold on
-pcolor(z,y,V2d')
-quiver(zz2d,yy2d,Ez2d,Ey2d,.5)
-contour(zz2d,yy2d,V2d, 'k')
+pcolor(y,z,V2d')
 colorbar
 colormap jet
 shading interp
+axis equal
+hold on
+quiver(yy2d(2:end-1,2:end-1),zz2d(2:end-1,2:end-1),Ez2d(2:end-1,2:end-1)',Ey2d(2:end-1,2:end-1)',.5)
+contour(yy2d,zz2d,V2d', 'k')
 hold off
 saveas(gcf,'images/one_slice_contour.png')
 
@@ -78,6 +80,7 @@ slice(xx,yy,zz,V,0,0,0)
 colorbar
 colormap jet
 shading interp
+axis equal
 hold on
 coneplot(xx,yy,zz,Ex,Ey,Ez,cxx,cyy,czz,.5);
 hold off
@@ -91,6 +94,7 @@ contourslice(xx,yy,zz,V,[],[],z)
 colorbar
 colormap jet
 shading interp
+axis equal
 hold on
 coneplot(xx,yy,zz,Ex,Ey,Ez,cxx,cyy,czz,.5)
 hold off

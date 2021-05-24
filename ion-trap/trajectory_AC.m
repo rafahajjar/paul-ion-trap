@@ -1,4 +1,4 @@
-function [r, v, a] = trajectory(ri, vi, qn, ds, cent, dt, T)
+function [r, v, a] = trajectory_AC(f, ri, vi, qn, ds, cent, dt, T)
     epsilon = 8.854e-12;
     K = 1/(4*pi*epsilon);
     u = 1.66e-27; % unidad de masa atomica
@@ -13,7 +13,7 @@ function [r, v, a] = trajectory(ri, vi, qn, ds, cent, dt, T)
     v(1, :) = vi;
     a(1, :) = 0;
     for i=2:steps
-        a(i, :) = (K*qion/mion)*sum(qn.*ds*(vecnorm(r(i-1, :)' - cent).^(-2))'*sign(qn).*unitary(r(i-1, :)'-cent), 2);
+        a(i, :) = (K*qion/mion)*sum(qn'.*ds.*(vecnorm(r(i-1, :)' - cent).^(-3)).*(r(i-1, :)'-cent), 2);
         v(i, :) = v(i-1, :) + a(i, :)*dt;
         r(i, :) = r(i-1, :) + v(i, :)*dt + 0.5*a(i, :)*dt^2;
     end
