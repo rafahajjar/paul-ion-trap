@@ -24,7 +24,7 @@ T = 0.01; % Total time in seconds;
 
 ri = initial_pos(r0, z0);
 vi = [0, 0, 0];
-[r, v, a] = trajectory(ri, vi, qn, ds, cent, dt, T);
+[r, v, a] = trajectory_AC(ri, vi, qn, ds, cent, dt, T);
 
 %% Representación gráfica
 
