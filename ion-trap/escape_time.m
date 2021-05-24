@@ -17,7 +17,7 @@ function [time] = escape_time(ri, vi, qn, ds, cent, dt, T, r0, z0)
         a(i, :) = (K*qion/mion)*sum(qn'.*ds.*(vecnorm(r(i-1, :)' - cent).^(-3)).*(r(i-1, :)'-cent), 2);
         v(i, :) = v(i-1, :) + a(i, :)*dt;
         r(i, :) = r(i-1, :) + v(i, :)*dt + 0.5*a(i, :)*dt^2;
-        if (r(i, 1)^2 + r(i,2)^2 >= (r0/4)^2) || (r(i, 3) >= z0/4)
+        if (r(i, 1)^2 + r(i,2)^2 >= (r0/8)^2) || (r(i, 3) >= z0/8)
            time = i*dt;
            break
         end
