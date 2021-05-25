@@ -1,5 +1,6 @@
 clear;
 close all;
+set(0,'defaulttextinterpreter','latex')
 
 %% Condensador hiperbolico: obtencion de la carga
 
@@ -27,7 +28,19 @@ for j = 1:length(V)
     freq(j) = 1/mean(time);
 end
 
-plot(V, freq)
+figure (1)
+plot(V, freq, 'LineWidth', 2);
+grid on
+title("Frecuencia minima en funcion de $V$",'FontSize', 20);
+xlabel("$V$",'FontSize', 20);
+ylabel("$f$",'FontSize', 20);
+
+figure (2)
+plot(log(V), log(freq), 'LineWidth', 2);
+grid on
+title("Frecuencia minima en funcion de $V$ (log)",'FontSize', 20);
+xlabel("$\log(V)$",'FontSize', 20);
+ylabel("$\logolñl(f)$",'FontSize', 20);
 
 % freq = kV^a.
 p = polyfit(log(V), log(freq), 1);
