@@ -3,7 +3,7 @@ function [time] = escape_time(ri, vi, qn, ds, cent, dt, T, r0, z0)
     K = 1/(4*pi*epsilon);
     u = 1.66e-27; % unidad de masa atomica
     qion = 1.60e-19; % carga del ion (con signo)
-    mion = 223*u; % masa del ion (Francio 1+)
+    mion = 30*u; % masa del ion
     
     steps = round(T/dt);
     r = zeros(steps, 3);

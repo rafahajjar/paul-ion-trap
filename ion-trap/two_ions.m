@@ -14,11 +14,11 @@ V = 0.5;
 
 [qn, V1, V2, V3, un, cent, ds] = electrodes(V, r0, z0);
 
-%% Calculo trayectoria de 1 ion
+%% Calculo trayectoria de 2 iones
 
-dt = 2e-4; % Timestep in seconds.
-T = 0.2;  % Total time in seconds.
-f = 4800;   % Frequency in hertzs.
+dt = 1e-4; % Timestep in seconds.
+T = 0.1;  % Total time in seconds.
+f = 2500;  % Frequency in hertzs.
 
 r1i = initial_pos(r0, z0);
 r2i = initial_pos(r0, z0);

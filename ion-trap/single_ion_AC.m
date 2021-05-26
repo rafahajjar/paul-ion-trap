@@ -16,9 +16,9 @@ V = 0.5;
 
 %% Calculo trayectoria de 1 ion
 
-dt = 2e-6; % Timestep in seconds.
-T = 0.07;  % Total time in seconds.
-f = 640;   % Frequency in hertzs.
+dt = 1e-5; % Timestep in seconds.
+T = 0.1;  % Total time in seconds.
+f = 1.9330e+03;  % Frequency in hertzs.
 
 ri = initial_pos(r0, z0);
 vi = [0, 0, 0];

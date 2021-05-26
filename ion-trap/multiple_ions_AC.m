@@ -1,5 +1,7 @@
 clear;
 close all;
+%%%%%%%%
+% Actualmente no funciona esta version
 
 N = 2; % Numero de iones
 

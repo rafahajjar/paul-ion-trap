@@ -28,23 +28,26 @@ for j = 1:length(V)
     freq(j) = 1/mean(time);
 end
 
-figure (1)
+figure ('Position',[0,100,500,400])
 plot(V, freq, 'LineWidth', 2);
 grid on
 title("Frecuencia minima en funcion de $V$",'FontSize', 20);
 xlabel("$V$",'FontSize', 20);
 ylabel("$f$",'FontSize', 20);
 
-figure (2)
+figure ('Position',[0,100,500,400])
 plot(log(V), log(freq), 'LineWidth', 2);
 grid on
 title("Frecuencia minima en funcion de $V$ (log)",'FontSize', 20);
 xlabel("$\log(V)$",'FontSize', 20);
-ylabel("$\logolñl(f)$",'FontSize', 20);
+ylabel("$\log(f)$",'FontSize', 20);
 
 % freq = kV^a.
 p = polyfit(log(V), log(freq), 1);
 a = p(1); % a = 1/2
 k = exp(p(2)); % k = 600
 
-% Conclusion: f = 600sqrt(V), en unidades del SI.
+Ve = 0.5;
+f = k*Ve^a;
+
+% Conclusion: f = const*sqrt(V), en unidades del SI.
