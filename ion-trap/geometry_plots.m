@@ -18,6 +18,10 @@ vx = [v1(1,:); v2(1,:); v3(1,:)];
 vy = [v1(2,:); v2(2,:); v3(2,:)];
 vz = [v1(3,:); v2(3,:); v3(3,:)];
 
+if not(isfolder('images'))
+    mkdir('images')
+end
+
 figure('Color', 'white')
 fill3(vx, vy, vz, qn, 'EdgeAlpha', 0)
 colorbar

@@ -48,6 +48,10 @@ cz = linspace(-zmax, zmax, m);
 
 %% Representación gráfica
 
+if not(isfolder('images'))
+    mkdir('images')
+end
+
 % One slice surface plot (x=0)
 figure('Color','white')
 surf(y,z,V2d')
