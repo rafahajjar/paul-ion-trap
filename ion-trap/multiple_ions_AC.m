@@ -1,5 +1,6 @@
 clear;
 close all;
+addpath('utils')
 
 N = 2; % Numero de iones
 

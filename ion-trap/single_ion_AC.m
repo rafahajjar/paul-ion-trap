@@ -1,5 +1,6 @@
 clear;
 close all;
+addpath('utils')
 
 %% Condensador hiperbolico: obtencion de la carga
 

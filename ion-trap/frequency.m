@@ -1,5 +1,6 @@
 clear;
 close all;
+addpath('utils')
 
 %% Condensador hiperbolico: obtencion de la carga
 
@@ -29,7 +30,6 @@ for j = 1:length(V)
     freq(j) = 1/mean(time);
 end
 
-plot(V, freq)
 
 % freq = kV^a.
 p = polyfit(log(V), log(freq), 1);
@@ -37,3 +37,9 @@ a = p(1); % a = 1/2
 k = exp(p(2)); % k = 1000
 
 % Conclusion: f = 1000sqrt(V), en unidades del SI.
+
+%% PLOTS
+
+figure('Color', 'white')
+plot(V, freq)
+saveas(gcf,'images/freq_vs_potential.png')
