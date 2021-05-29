@@ -1,5 +1,6 @@
 clear;
 close all;
+addpath('utils')
 
 %% Condensador hiperbolico: obtencion de la carga
 
@@ -18,12 +19,18 @@ vx = [v1(1,:); v2(1,:); v3(1,:)];
 vy = [v1(2,:); v2(2,:); v3(2,:)];
 vz = [v1(3,:); v2(3,:); v3(3,:)];
 
+if not(isfolder('images'))
+    mkdir('images')
+end
+
 figure('Color', 'white')
-fill3(vx, vy, vz, qn, 'EdgeAlpha', 0)
+fill3(vx, vy, vz, qn)
 colorbar
 colormap jet
+axis equal
 saveas(gcf,'images/geometry.png')
 
 figure('Color', 'white')
 fill3(vx, vy, vz, 'g')
+axis equal
 saveas(gcf,'images/geometry_raw.png')

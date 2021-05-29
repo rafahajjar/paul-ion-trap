@@ -1,5 +1,6 @@
 clear;
 close all;
+addpath('utils')
 
 %% Condensador hiperbolico: obtencion de la carga
 
@@ -47,6 +48,10 @@ cz = linspace(-zmax, zmax, m);
 [cxx, cyy, czz] = meshgrid(cx,cy,cz);
 
 %% Representación gráfica
+
+if not(isfolder('images'))
+    mkdir('images')
+end
 
 % One slice surface plot (x=0)
 figure('Color','white')

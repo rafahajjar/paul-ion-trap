@@ -1,7 +1,6 @@
 clear;
 close all;
-%%%%%%%%
-% Actualmente no funciona esta version
+addpath('utils')
 
 N = 2; % Numero de iones
 

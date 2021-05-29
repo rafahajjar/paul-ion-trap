@@ -5,8 +5,9 @@ function [src] = trajectory_AC_two(r1i, r2i, v1i, v2i, qn, ds, cent, dt, T, f)
     e = +1.60e-19; % carga elemental
     q1 = +e;
     q2 = +e;
-    mion = 30*u; % masa del ion
-    
+    m1 = 30*u; % masa del ion 1
+    m2 = 50*u; % masa del ion 2
+
     steps = round(T/dt);
     r1 = zeros(steps, 3); r2 = r1;
     v1 = zeros(steps, 3); v2 = v1;
@@ -23,9 +24,9 @@ function [src] = trajectory_AC_two(r1i, r2i, v1i, v2i, qn, ds, cent, dt, T, f)
             t = t - period;
             qn = -qn;
         end
-        a12 = (K*q1*q2/mion)*vecnorm(r1(i-1, :)' - r2(i-1, :)').^(-3).*(r1(i-1, :)'-r2(i-1, :)');
-        a1(i, :) = +a12 + (K*q1/mion)*sum(qn'.*ds.*(vecnorm(r1(i-1, :)' - cent).^(-3)).*(r1(i-1, :)'-cent), 2);
-        a2(i, :) = -a12 + (K*q2/mion)*sum(qn'.*ds.*(vecnorm(r2(i-1, :)' - cent).^(-3)).*(r2(i-1, :)'-cent), 2);
+        F12 = K*q1*q2*vecnorm(r1(i-1, :)' - r2(i-1, :)').^(-3).*(r1(i-1, :)'-r2(i-1, :)');
+        a1(i, :) = +F12/m1 + (K*q1/m1)*sum(qn'.*ds.*(vecnorm(r1(i-1, :)' - cent).^(-3)).*(r1(i-1, :)'-cent), 2);
+        a2(i, :) = -F12/m2 + (K*q2/m2)*sum(qn'.*ds.*(vecnorm(r2(i-1, :)' - cent).^(-3)).*(r2(i-1, :)'-cent), 2);
         v1(i, :) = v1(i-1, :) + a1(i, :)*dt;
         v2(i, :) = v2(i-1, :) + a2(i, :)*dt;
         r1(i, :) = r1(i-1, :) + v1(i, :)*dt + 0.5*a1(i, :)*dt^2;
