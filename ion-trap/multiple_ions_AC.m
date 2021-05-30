@@ -41,12 +41,3 @@ hold(ax)
 fill3(ax, vx, vy, vz, qn, 'EdgeAlpha', 0, 'FaceAlpha', .3)
 colormap jet
 comet3(ax, r(:, 1), r(:, 2), r(:, 3))
-
-%% Write video
-
-for k = 1:20 
-   frame = getframe(gcf);
-   writeVideo(v,frame);
-end
-
-close(v);
