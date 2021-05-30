@@ -15,7 +15,7 @@ V = 0.5;
 
 [qn, v1, v2, v3, un, cent, ds] = electrodes(V, r0, z0);
 
-%% Calculo trayectoria de 1 ion
+%% Comparacion entre señal senoidal y triangular
 
 dt = 1e-5; % Timestep in seconds.
 T = 0.1;  % Total time in seconds.
