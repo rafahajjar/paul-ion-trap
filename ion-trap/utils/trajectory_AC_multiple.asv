@@ -1,4 +1,4 @@
-function [src] = trajectory_AC_multiple(ri, vi, qi, m, qn, ds, cent, dt, T, f, N)
+function [r, v, a] = trajectory_AC_multiple(ri, vi, qi, m, qn, ds, cent, dt, T, f, N)
     epsilon = 8.854e-12;
     K = 1/(4*pi*epsilon);
     
@@ -19,17 +19,14 @@ function [src] = trajectory_AC_multiple(ri, vi, qi, m, qn, ds, cent, dt, T, f, N
         Q = q*cos(2*pi*f*dt*i);
         
         for j = 1:N
-            aux1 = (K*qi(j)/m(j));
-            aux2 = Q'.*s;
-            aux3 = squeeze(r(i-1, j, :))-c;
-            aux4 = vecnorm(aux3);
-            a(i, j, :) = (K*qi(j)/m(j))*sum(Q'.*s.*(vecnorm(squeeze(r(i-1, j, :))-c).^(-3)).*(squeeze(r(i-1, j, :))-c), 2, 'omitnan');
+            aux1 = (K*qi(j)/m(j))
+            aux2 = Q'.*s
+            aux3 = squeeze(r(i-1, j, :))'-c
+            a(i, j, :) = (K*qi(j)/m(j))*sum(Q'.*s.*(vecnorm(squeeze(r(i-1, j, :))'-c).^(-3)).*(squeeze(r(i-1, j, :))'-c), 2, 'omitnan');
         end
         
         v(i, :, :) = v(i-1, :, :) + a(i, :, :)*dt;
         r(i, :, :) = r(i-1, :, :) + v(i, :, :)*dt + 0.5*a(i, :, :)*dt^2;
-        
-        c = [cent, squeeze(r(i,:,:))'];
         t = t + dt;
     end
     

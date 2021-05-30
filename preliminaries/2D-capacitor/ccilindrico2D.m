@@ -60,8 +60,8 @@ ea = abs(C-Cideal);
 er = ea/Cideal;
 
 % Representacion 2D
-x = linspace(-2*d, 2*d, 41);
-y = linspace(-2*d, 2*d, 41);
+x = linspace(-2*d, 2*d, 21);
+y = linspace(-2*d, 2*d, 21);
 [xx, yy] = meshgrid(x,y);
 rr = xx + 1i*yy;
 
@@ -80,6 +80,7 @@ colorbar
 colormap jet
 shading interp
 set(gcf,'color','white')
+saveas(gcf,'images/V_cilindric.png')
 
 figure(2)
 hold on
@@ -89,4 +90,6 @@ contour(xx,yy,V)
 colorbar
 colormap jet
 shading interp
+axis equal
 set(gcf,'color','white')
+saveas(gcf,'images/E_cilindric.png')

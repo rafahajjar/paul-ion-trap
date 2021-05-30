@@ -61,15 +61,14 @@ ea = abs(C-Cideal);
 er = ea/Cideal;
 
 % Representacion 2D
-n = 101;
-x = linspace(-L/2, L/2, n);
-y = linspace(-d, d, n);
+x = linspace(-L/2, L/2, 41);
+y = linspace(-d, d, 11);
 [xx, yy] = meshgrid(x,y);
 rr = xx + 1i*yy;
 
-V = zeros(n, n);
-for i = 1:n
-    for j = 1:n
+V = zeros(11, 41);
+for i = 1:11
+    for j = 1:41
         for k = 1:length(loc)
             V(i,j) = V(i,j) + qn(k)*potentialpercharge(rr(i,j), loc(k), h);
         end
@@ -82,6 +81,7 @@ surf(x,y,V)
 colorbar
 colormap jet
 shading interp
+saveas(gcf,'images/V_planar.png')
 
 figure('Color', 'white')
 hold on
@@ -90,4 +90,5 @@ quiver(xx,yy,Ex,Ey)
 contour(xx,yy,V)
 colorbar
 colormap jet
+saveas(gcf,'images/E_planar.png')
 shading interp
