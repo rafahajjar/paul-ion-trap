@@ -1,4 +1,4 @@
-function [r, v, a] = trajectory_DC(ri, vi, qn, ds, cent, dt, T)
+function [r] = trajectory_DC(ri, vi, qn, ds, cent, dt, T)
     epsilon = 8.854e-12;
     K = 1/(4*pi*epsilon);
     u = 1.66e-27; % unidad de masa atomica

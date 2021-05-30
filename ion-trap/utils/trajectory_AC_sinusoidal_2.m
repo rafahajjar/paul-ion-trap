@@ -1,12 +1,13 @@
-function [src] = trajectory_AC_two(r1i, r2i, v1i, v2i, qn, ds, cent, dt, T, f)
+function [src] = trajectory_AC_sinusoidal_2(r1i, r2i, v1i, v2i, qn, ds, cent, dt, T, f)
     epsilon = 8.854e-12;
     K = 1/(4*pi*epsilon);
     u = 1.66e-27; % unidad de masa atomica
-    q1 = 1.60e-19; % carga del ion 1 (con signo)
-    q2 = -1.60e-19; % carga del ion 2 (con signo)
+    e = +1.60e-19; % carga elemental
+    q1 = +e;
+    q2 = +e;
     m1 = 30*u; % masa del ion 1
-    m2 = 50*u; % masa del ion 2
-    
+    m2 = 30*u; % masa del ion 2
+
     steps = round(T/dt);
     r1 = zeros(steps, 3); r2 = r1;
     v1 = zeros(steps, 3); v2 = v1;
@@ -16,13 +17,11 @@ function [src] = trajectory_AC_two(r1i, r2i, v1i, v2i, qn, ds, cent, dt, T, f)
     v1(1, :) = v1i; v2(1, :) = v2i;
     a1(1, :) = 0;   a2(2, :) = 0;
 
-    period = 1/f;
+    qn0 = qn;
+    omega = 2*pi*f;
     t = 0;
     for i=2:steps
-        if t > period
-            t = t - period;
-            qn = -qn;
-        end
+        qn = qn0.*cos(omega*t);
         F12 = K*q1*q2*vecnorm(r1(i-1, :)' - r2(i-1, :)').^(-3).*(r1(i-1, :)'-r2(i-1, :)');
         a1(i, :) = +F12/m1 + (K*q1/m1)*sum(qn'.*ds.*(vecnorm(r1(i-1, :)' - cent).^(-3)).*(r1(i-1, :)'-cent), 2);
         a2(i, :) = -F12/m2 + (K*q2/m2)*sum(qn'.*ds.*(vecnorm(r2(i-1, :)' - cent).^(-3)).*(r2(i-1, :)'-cent), 2);

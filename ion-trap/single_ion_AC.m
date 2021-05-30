@@ -18,13 +18,15 @@ V = 0.5;
 %% Calculo trayectoria de 1 ion
 
 dt = 1e-5; % Timestep in seconds.
-T = 0.1;  % Total time in seconds.
-f = 640;   % Frequency in hertzs.
+T = 1;  % Total time in seconds.
 steps = round(T/dt);
+f = 671;   % Frequency in hertzs.
 
 ri = initial_pos(r0, z0);
 vi = [0, 0, 0];
-[r, v, a] = trajectory_AC(ri, vi, qn, ds, cent, dt, T, f);
+r = trajectory_AC_sinusoidal(ri, vi, qn*(pi/4), ds, cent, dt, T, f);
+%r = trajectory_AC_triangular(ri, vi, qn, ds, cent, dt, T, f);
+%r = trajectory_AC_square(ri, vi, qn*(1/2), ds, cent, dt, T, f);
 
 %% Representación gráfica
 close all;

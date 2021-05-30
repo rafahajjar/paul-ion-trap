@@ -1,9 +1,9 @@
-function [r, v, a] = trajectory_AC(ri, vi, qn, ds, cent, dt, T, f)
+function [r] = trajectory_AC_sinusoidal(ri, vi, qn, ds, cent, dt, T, f)
     epsilon = 8.854e-12;
     K = 1/(4*pi*epsilon);
     u = 1.66e-27; % unidad de masa atomica
     qion = 1.60e-19; % carga del ion (con signo)
-    mion = 223*u; % masa del ion (Francio 1+)
+    mion = 30*u; % masa del ion
     
     steps = round(T/dt);
     r = zeros(steps, 3);
@@ -13,13 +13,11 @@ function [r, v, a] = trajectory_AC(ri, vi, qn, ds, cent, dt, T, f)
     v(1, :) = vi;
     a(1, :) = 0;
     
-    period = 1/f;
+    qn0 = qn;
+    omega = 2*pi*f;
     t = 0;
     for i=2:steps
-        if t > period
-            t = t - period;
-            qn = -qn;
-        end
+        qn = qn0.*cos(omega*t);
         a(i, :) = (K*qion/mion)*sum(qn'.*ds.*(vecnorm(r(i-1, :)' - cent).^(-3)).*(r(i-1, :)'-cent), 2);
         v(i, :) = v(i-1, :) + a(i, :)*dt;
         r(i, :) = r(i-1, :) + v(i, :)*dt + 0.5*a(i, :)*dt^2;

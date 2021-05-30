@@ -1,5 +1,6 @@
 clear;
 close all;
+set(0,'defaulttextinterpreter','latex')
 addpath('utils')
 
 %% Condensador hiperbolico: obtencion de la carga
@@ -30,6 +31,22 @@ for j = 1:length(V)
     freq(j) = 1/mean(time);
 end
 
+figure ('Position',[0,100,500,400])
+plot(V, freq, 'LineWidth', 2);
+grid on
+title("Frecuencia minima en funcion de $V$",'FontSize', 20);
+xlabel("$V$",'FontSize', 20);
+ylabel("$f$",'FontSize', 20);
+saveas(gcf,'images/freq_vs_potential.png')
+
+figure ('Position',[0,100,500,400])
+plot(log(V), log(freq), 'LineWidth', 2);
+grid on
+title("Frecuencia minima en funcion de $V$ (log)",'FontSize', 20);
+xlabel("$\log(V)$",'FontSize', 20);
+ylabel("$\log(f)$",'FontSize', 20);
+saveas(gcf,'images/logfreq_vs_logpotential.png')
+
 
 % freq = kV^a.
 p = polyfit(log(V), log(freq), 1);
@@ -38,8 +55,7 @@ k = exp(p(2)); % k = 1000
 
 % Conclusion: f = 1000sqrt(V), en unidades del SI.
 
-%% PLOTS
+Ve = 0.5;
+f = k*Ve^a;
 
-figure('Color', 'white')
-plot(V, freq)
-saveas(gcf,'images/freq_vs_potential.png')
+% Conclusion: f = const*sqrt(V), en unidades del SI.
