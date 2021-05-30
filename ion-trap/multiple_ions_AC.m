@@ -2,7 +2,7 @@ clear;
 close all;
 addpath('utils')
 
-N = 2; % Numero de iones
+N = 3; % Numero de iones
 
 %% Condensador hiperbolico: obtencion de la carga
 
@@ -19,13 +19,16 @@ V = 0.5;
 
 %% Calculo trayectoria de 1 ion
 
-dt = 2e-6; % Timestep in seconds.
-T = 0.07;  % Total time in seconds.
-f = 640;   % Frequency in hertzs.
+dt = 2e-5; % Timestep in seconds.
+T = 0.1;  % Total time in seconds.
+f = 4800;   % Frequency in hertzs.
 
+u = 1.66e-27; % unidad de masa atomica
 ri = initial_pos_multiple(r0, z0, N);
 vi = zeros(size(ri));
-[r, v, a] = trajectory_AC_multiple(ri, vi, qn, ds, cent, dt, T, f, N);
+qi = 1.60e-19 * ones(N, 1);
+m  = 30*u * ones(N, 1);
+[src] = trajectory_AC_multiple(ri, vi, qi, m, qn, ds, cent, dt, T, f, N);
 
 %% Representación gráfica
 
@@ -33,11 +36,5 @@ vx = [v1(1,:); v2(1,:); v3(1,:)];
 vy = [v1(2,:); v2(2,:); v3(2,:)];
 vz = [v1(3,:); v2(3,:); v3(3,:)];
 
-figure('Color','white','Position',[0,100,1000,800])
-ax = axes;
-set(ax,'xlim',[-rmax rmax],'ylim',[-rmax rmax],'zlim',[-zmax zmax]);
-view(ax, 3)
-hold(ax)
-fill3(ax, vx, vy, vz, qn, 'EdgeAlpha', 0, 'FaceAlpha', .3)
-colormap jet
-comet3(ax, r(:, 1), r(:, 2), r(:, 3))
+comet3n(src, rmax, zmax, vx, vy, vz, qn, 'speed', 10, 'headsize', 1, 'tailwidth', 1,... 
+'taillength', 150)
