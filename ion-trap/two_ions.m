@@ -17,9 +17,9 @@ V = 0.5;
 
 %% Calculo trayectoria de 2 iones
 
-dt = 1e-5; % Timestep in seconds.
+dt = 3e-5; % Timestep in seconds.
 T = 0.1;  % Total time in seconds.
-f = 670;  % Frequency in hertzs.
+f = 674;  % Frequency in hertzs.
 
 r1i = initial_pos(r0, z0);
 r2i = initial_pos(r0, z0);
@@ -36,5 +36,5 @@ vx = [V1(1,:); V2(1,:); V3(1,:)];
 vy = [V1(2,:); V2(2,:); V3(2,:)];
 vz = [V1(3,:); V2(3,:); V3(3,:)];
 
-comet3n(src, rmax, zmax, vx, vy, vz, qn, 'speed', 10, 'headsize', 1, 'tailwidth', 1,... 
+comet3n(src, rmax, zmax, vx, vy, vz, qn, 'speed', 10, 'headsize', 1.6, 'tailwidth', 1,... 
 'taillength', 150)

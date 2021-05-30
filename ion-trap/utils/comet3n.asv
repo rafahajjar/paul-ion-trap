@@ -37,6 +37,8 @@ for tt = 1:max(src(:,4))
     ObjList_T{tt} = src(src(:,4)==tt,5);
 end
 
+src()
+
 if size(src,2) ~= 8 
     color_temp = hsv(max(src(:,5)));
     color_temp = color_temp(randperm(max(src(:,5)))',:);
@@ -110,7 +112,6 @@ title("Trajectory of two trapped ions (AC)",'FontSize', 22);
 xlabel("$x$",'FontSize', 20);
 ylabel("$y$",'FontSize', 20);
 zlabel("$z$",'FontSize', 20);
-camlight('right')
 fill3(ax, vx, vy, vz, qn, 'EdgeAlpha', 0, 'FaceAlpha', .3)
 colormap jet
 

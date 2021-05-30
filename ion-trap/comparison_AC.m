@@ -11,7 +11,7 @@ rmax = sqrt(2*z0^2+r0^2);
 zmax = sqrt(z0^2+r0^2/2);
 
 % Potencial en cada placa hiperbolica del condensador
-V = 0.5; 
+V = 0.5;
 
 [qn, v1, v2, v3, un, cent, ds] = electrodes(V, r0, z0);
 
@@ -19,7 +19,7 @@ V = 0.5;
 
 dt = 1e-5; % Timestep in seconds.
 T = 0.1;  % Total time in seconds.
-% Frequencies used for article, very slow:
+% Frequencies used for article, very slow to run:
 %  f = [660	665	668	669 670	672	674	676	678	680	682	684	686	688	690	692	694 695	700];
 f = 670:2:676;
 trials = 10; % Number of trials per frequency

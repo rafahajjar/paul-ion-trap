@@ -1,6 +1,7 @@
 clear;
 close all;
 addpath('utils')
+set(0,'defaulttextinterpreter','latex')
 
 %% Condensador hiperbolico: obtencion de la carga
 
@@ -25,9 +26,15 @@ end
 
 figure('Color', 'white')
 fill3(vx, vy, vz, qn)
+set(gca,'FontSize',12)
+title("Distribution of charge in the Paul trap",'FontSize', 22);
 colorbar
 colormap jet
 axis equal
+view([45 16.5])
+xlabel("$x$",'FontSize', 20);
+ylabel("$y$",'FontSize', 20);
+zlabel("$z$",'FontSize', 20);
 saveas(gcf,'images/geometry.png')
 
 figure('Color', 'white')

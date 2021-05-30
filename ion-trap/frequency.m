@@ -31,20 +31,21 @@ for j = 1:length(V)
     freq(j) = 1/mean(time);
 end
 
-figure ('Position',[0,100,500,400])
+figure ('Position',[0,100,500,300], 'Color', 'white')
 plot(V, freq, 'LineWidth', 2);
 grid on
-title("Frecuencia minima en funcion de $V$",'FontSize', 20);
+title("Inverse averaged period for each $V$",'FontSize', 20);
 xlabel("$V$",'FontSize', 20);
-ylabel("$f$",'FontSize', 20);
+ylabel("$1/T$",'FontSize', 20);
 saveas(gcf,'images/freq_vs_potential.png')
 
-figure ('Position',[0,100,500,400])
+figure ('Position',[0,100,500,300], 'Color', 'white')
 plot(log(V), log(freq), 'LineWidth', 2);
 grid on
-title("Frecuencia minima en funcion de $V$ (log)",'FontSize', 20);
-xlabel("$\log(V)$",'FontSize', 20);
-ylabel("$\log(f)$",'FontSize', 20);
+set(gca,'FontSize',12)
+title("Average escape time vs potential",'FontSize', 22);
+xlabel("$\log V$",'FontSize', 20);
+ylabel("$\log(1/T)$",'FontSize', 20);
 saveas(gcf,'images/logfreq_vs_logpotential.png')
 
 

@@ -20,7 +20,7 @@ V = 0.5;
 dt = 1e-5; % Timestep in seconds.
 T = 1;  % Total time in seconds.
 steps = round(T/dt);
-f = 671;   % Frequency in hertzs.
+f = 672;   % Frequency in hertzs.
 
 ri = initial_pos(r0, z0);
 vi = [0, 0, 0];
@@ -35,11 +35,17 @@ vx = [v1(1,:); v2(1,:); v3(1,:)];
 vy = [v1(2,:); v2(2,:); v3(2,:)];
 vz = [v1(3,:); v2(3,:); v3(3,:)];
 
-figure('Color','white','Position',[250,100,1000,800])
+figure('Color','white')
 ax = axes;
 set(ax,'xlim',[-rmax rmax],'ylim',[-rmax rmax],'zlim',[-zmax zmax]);
 view(ax, 3)
 axis equal
+view([45 16.5])
+set(gca,'FontSize',12)
+title("Trajectory of a trapped ion (AC)",'FontSize', 22);
+xlabel("$x$",'FontSize', 20);
+ylabel("$y$",'FontSize', 20);
+zlabel("$z$",'FontSize', 20);
 hold(ax)
 s = fill3(ax, vx, vy, vz, qn, 'EdgeAlpha', 0, 'FaceAlpha', .3);
 colormap jet

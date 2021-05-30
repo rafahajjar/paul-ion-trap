@@ -34,6 +34,13 @@ figure('Color','white')
 ax = axes;
 set(ax,'xlim',[-rmax rmax],'ylim',[-rmax rmax],'zlim',[-zmax zmax]);
 view(ax, 3)
+axis equal
+view([45 16.5])
+set(gca,'FontSize',12)
+title("Trajectory of an ion (DC)",'FontSize', 22);
+xlabel("$x$",'FontSize', 20);
+ylabel("$y$",'FontSize', 20);
+zlabel("$z$",'FontSize', 20);
 hold(ax)
 fill3(ax, vx, vy, vz, qn, 'EdgeAlpha', 0, 'FaceAlpha', .3)
 colormap jet
