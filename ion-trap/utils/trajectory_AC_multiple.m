@@ -1,4 +1,4 @@
-function [r, v, a] = trajectory_AC_multiple(ri, vi, qn, ds, cent, dt, T, f, N)
+function [r] = trajectory_AC_multiple(ri, vi, qn, ds, cent, dt, T, f, N)
     epsilon = 8.854e-12;
     K = 1/(4*pi*epsilon);
     u = 1.66e-27; % unidad de masa atomica

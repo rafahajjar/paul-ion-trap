@@ -25,7 +25,7 @@ f = 640;   % Frequency in hertzs.
 
 ri = initial_pos_multiple(r0, z0, N);
 vi = zeros(size(ri));
-[r, v, a] = trajectory_AC_multiple(ri, vi, qn, ds, cent, dt, T, f, N);
+r = trajectory_AC_multiple(ri, vi, qn, ds, cent, dt, T, f, N);
 
 %% Representación gráfica
 
