@@ -2,7 +2,7 @@ clear;
 close all;
 addpath('utils')
 
-N = 3; % Numero de iones
+N = 2; % Numero de iones
 
 %% Condensador hiperbolico: obtencion de la carga
 
