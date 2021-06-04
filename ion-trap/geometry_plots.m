@@ -27,7 +27,6 @@ end
 figure('Color', 'white')
 fill3(vx, vy, vz, qn)
 set(gca,'FontSize',12)
-title("Distribution of charge in the Paul trap",'FontSize', 22);
 colorbar
 colormap jet
 axis equal

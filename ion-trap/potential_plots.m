@@ -78,14 +78,19 @@ saveas(gcf,'images/one_slice_contour.png')
 
 % 3D Slice plot
 figure('Color','white')
+set(gca,'FontSize',12)
 slice(xx,yy,zz,V,0,0,0)
 colorbar
 colormap jet
 shading interp
 axis equal
 hold on
-coneplot(xx,yy,zz,Ex,Ey,Ez,cxx,cyy,czz,.5);
+coneplot(xx,yy,zz,Ex,Ey,Ez,cxx,cyy,czz,.7);
 hold off
+view([45 16.5])
+xlabel("$x$",'FontSize', 20);
+ylabel("$y$",'FontSize', 20);
+zlabel("$z$",'FontSize', 20);
 saveas(gcf,'images/3d_slice.png')
 
 % Countourslice plot

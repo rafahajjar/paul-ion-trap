@@ -3,4 +3,5 @@ ion-trap/videos
 preliminaries/2D-capacitor/images
 preliminaries/3D-capacitor/images
 ion-trap/*.asv
+ion-trap/prova.m
 *.pdf

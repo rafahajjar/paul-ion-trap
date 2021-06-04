@@ -18,10 +18,10 @@ V = 1;
 dt = 1e-4; % Timestep in seconds.
 T = 0.1;  % Total time in seconds.
 f = 1000;
-N = [1, 2, 5, 10, 20, 50, 100];
+N = [1, 2, 5, 10, 20, 50, 100, 200];
 minV = zeros(1, length(N));
 %v = [1, 2, 5, 10, 20, 30, 50, 70, 100, 200, 300, 500, 1000];
-v = 10.^(0:0.25:3);
+v = 10.^(0:0.2:3);
 for i = 1:length(N)
     qi = 1.60e-19 * ones(N(i), 1);
     mi = 30*1.66e-27 * ones(N(i), 1);
@@ -37,9 +37,12 @@ end
 
 %% Plot
 
-figure('Color','white')
-plot(N, 20*log(minV))
-xlabel('Number of ions','FontSize', 16,'Interpreter','latex')
-ylabel('Maximum charge scale factor (dB)','FontSize', 16,'Interpreter','latex')
+figure('Position',[0,100,1000,600],'Color','white')
+grid on
+hold on
+set(gca,'FontSize',12)
+plot(log10(N), log10(minV), '-s', 'LineWidth', 2, 'MarkerSize', 8, 'MarkerEdgeColor','blue','MarkerFaceColor',[0.5 1 0])
+xlabel('Number of ions (log)','FontSize', 20,'Interpreter','latex')
+ylabel('Max. charge scale factor (log)','FontSize', 20,'Interpreter','latex')
 saveas(gcf,'images/multiple_ions.png')
 
