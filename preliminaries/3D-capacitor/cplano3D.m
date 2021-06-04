@@ -2,7 +2,7 @@ clear;
 close all;
 
 % Numero de cargas fuente en la discretizacion
-N = 20;
+N = 15;
 
 % Constantes fisicas
 epsilon = 8.854e-12;
@@ -15,7 +15,7 @@ V1 = 0.5;
 V2 = -0.5;
 
 % Dimensiones
-d = 0.05;
+d = 0.1;
 L = 1;
 
 % Capacidad ideal (aproximada)
@@ -45,7 +45,7 @@ figure('Color', 'white')
 vx = [v1(1,:); v2(1,:); v3(1,:)];
 vy = [v1(2,:); v2(2,:); v3(2,:)];
 vz = [v1(3,:); v2(3,:); v3(3,:)];
-fill3(vx, vy, vz, qn, 'EdgeAlpha', 0)
+fill3(vx, vy, vz, qn)
 colorbar
 colormap jet
 saveas(gcf,'images/geometry.png')

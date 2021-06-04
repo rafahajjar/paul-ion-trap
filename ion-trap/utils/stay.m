@@ -1,10 +1,8 @@
-function stay = stay(r0, z0, qn, ds, cent, dt, T, f, N)
+function stay = stay(r0, z0, qn, ds, cent, dt, T, f, N, qi, mi)
     steps = round(T/dt);
     ri = initial_pos_multiple(r0, z0, N);
     vi = zeros(size(ri));
-    qi = 1.60e-19 * ones(N, 1);
-    m  = 30*1.66e-27 * ones(N, 1);
-    src = trajectory_AC_multiple(ri, vi, qi, m, qn*(pi/4), ds, cent, dt, T, f, N);
+    src = trajectory_AC_multiple(ri, vi, qi, mi, qn*(pi/4), ds, cent, dt, T, f, N);
     stay = 1;
     Rf = zeros(N, 5);
     for j=1:N

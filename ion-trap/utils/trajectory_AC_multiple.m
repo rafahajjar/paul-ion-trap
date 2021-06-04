@@ -16,16 +16,20 @@ function [src] = trajectory_AC_multiple(ri, vi, qi, m, qn, ds, cent, dt, T, f, N
     
     t = 0;
     for i=2:steps
-        Q = q*cos(2*pi*f*dt*i);
+        Q = q*cos(2*pi*f*t);
         
         for j = 1:N
             a(i, j, :) = (K*qi(j)/m(j))*sum(Q'.*s.*(vecnorm(squeeze(r(i-1, j, :))-c).^(-3)).*(squeeze(r(i-1, j, :))-c), 2, 'omitnan');
         end
-        
         v(i, :, :) = v(i-1, :, :) + a(i, :, :)*dt;
-        r(i, :, :) = r(i-1, :, :) + v(i, :, :)*dt + 0.5*a(i, :, :)*dt^2;
+        r(i, :, :) = r(i-1, :, :) + v(i-1, :, :)*dt + 0.5*a(i, :, :)*dt^2;
         
-        c = [cent, squeeze(r(i,:,:))'];
+        if N == 1
+            c = [cent, squeeze(r(i,:,:))];
+        else 
+            c = [cent, squeeze(r(i,:,:))'];
+        end
+        
         t = t + dt;
     end
     

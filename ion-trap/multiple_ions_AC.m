@@ -2,7 +2,7 @@ clear;
 close all;
 addpath('utils')
 
-N = 2; % Numero de iones
+N = 500; % Numero de iones
 
 %% Condensador hiperbolico: obtencion de la carga
 
@@ -19,9 +19,9 @@ V = 0.5;
 
 %% Calculo trayectoria de 1 ion
 
-dt = 2e-5; % Timestep in seconds.
+dt = 1e-4; % Timestep in seconds.
 T = 0.1;  % Total time in seconds.
-f = 4800;   % Frequency in hertzs.
+f = 1000;   % Frequency in hertzs.
 
 u = 1.66e-27; % unidad de masa atomica
 ri = initial_pos_multiple(r0, z0, N);

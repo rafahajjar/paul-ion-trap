@@ -19,21 +19,19 @@ function [src] = trajectory_AC_multiple(ri, vi, qi, m, qn, ds, cent, dt, T, f, N
         Q = q*cos(2*pi*f*dt*i);
         
         for j = 1:N
-            aux1 = r(i-1, j, :)-c;
-            aux2 = vecnorm(aux1);
-            dim
-            a(i, j, :) = (K*qi(j)/m(j))*sum(Q'.*s.*(vecnorm(r(i-1, j, :)-c).^(-3)).*(r(i-1, j, :)-c), 2, 'omitnan');
+            a(i, j, :) = (K*qi(j)/m(j))*sum(Q'.*s.*(vecnorm(squeeze(r(i-1, j, :))-c).^(-3)).*(squeeze(r(i-1, j, :))-c), 2, 'omitnan');
         end
         
         v(i, :, :) = v(i-1, :, :) + a(i, :, :)*dt;
         r(i, :, :) = r(i-1, :, :) + v(i, :, :)*dt + 0.5*a(i, :, :)*dt^2;
+        
         
         c = [cent, squeeze(r(i,:,:))'];
         t = t + dt;
     end
     
     t=1:steps;
-    id = ones(length(t), 1); 
+    id = ones(steps, 1); 
     src = [];
     for j = 1:N
         obj = cat(2, r(:,j,1), r(:,j,2), r(:,j,3), t', j*id);
